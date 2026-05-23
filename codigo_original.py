@@ -2,7 +2,7 @@
 import time
 import numpy as np
 
-def primos_optimizado(limite):
+def es_primo(limite):
     # Reducción del rango: solo hasta raíz cuadrada
     # Esto evita iterar innecesariamente y mejora tiempos.
     # Uso de arrays de NumPy: más eficiente que listas en operaciones vectorizadas.
@@ -22,7 +22,7 @@ def primos_optimizado(limite):
 
 # Medición de tiempo.
 inicio = time.time()
-primos = primos_optimizado(100000)
+primos = es_primo(100000)
 fin = time.time()
 
 # Resultados: cantidad de primos y tiempo de ejecución
