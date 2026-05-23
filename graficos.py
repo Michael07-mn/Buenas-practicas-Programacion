@@ -32,18 +32,17 @@ plt.legend()
 plt.grid(True)
 plt.savefig('comparacion_tiempos.png')
 plt.show()
+plt.close()
 
 # Gráfico de barras para 100,000
-plt.figure(figsize=(6, 4))
+plt.figure(figsize=(7, 5))
 categorias = ['Original', 'Optimizado']
 tiempos_finales = [tiempos_orig[-1], tiempos_opt[-1]]
-plt.bar(categorias, tiempos_finales, color=['red', 'green'])
+plt.bar(categorias, tiempos_finales, color=['gray', 'purple'])
 plt.ylabel('Tiempo (segundos)')
 plt.title('Tiempo para N = 100,000')
 for i, v in enumerate(tiempos_finales):
     plt.text(i, v + 0.5, f"{v:.3f}s", ha='center')
 plt.savefig('barra_comparativa.png')
 plt.show()
-
-# Distribución de tiempos (simulación usando profiling)
-# Si tienes los archivos de profiling, puedes cargarlos y graficar.
+plt.close()
