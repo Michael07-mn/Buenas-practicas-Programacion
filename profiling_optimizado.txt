@@ -1,0 +1,16 @@
+Sat May 23 16:50:08 2026    profiling_optimizado.prof
+
+         7 function calls in 0.003 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.002    0.002    0.002    0.002 profiling.py:17(primos_optimizado)
+        1    0.000    0.000    0.003    0.003 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 numeric.py:171(ones)
+        1    0.000    0.000    0.002    0.002 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method numpy.empty}
+        1    0.000    0.000    0.000    0.000 multiarray.py:1106(copyto)
+
+
