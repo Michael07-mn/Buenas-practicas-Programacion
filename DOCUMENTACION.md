@@ -36,6 +36,9 @@ Reemplacé completamente la función es_primo por un algoritmo de criba de Erat�
 | Original (sin optimizar)                     | 73.22532 s        |
 | Optimizado (raíz cuadrada + list comprehension + NumPy) | 0.0166 s         |
 
+<img width="700" height="500" alt="barra_comparativa" src="https://github.com/user-attachments/assets/22045ddb-b3f9-476d-a258-6a3f61178a42" />
+
+
 La mejora es evidente, el código es aproximadamente 4.400 veces más rápido que el original, el cual pasa de practicamente 1 minuto a tan solo 16 milésimas de segundo.
 
 
@@ -48,7 +51,7 @@ La mejora es evidente, el código es aproximadamente 4.400 veces más rápido qu
 | 1      | 0.002   | 0.002   | 0.002   | 0.002   | profiling.py:17(primos_optimizado)                 |
 | 1      | 0.000   | 0.000   | 0.003   | 0.003   | {built-in method builtins.exec}                    |
 | 1      | 0.000   | 0.000   | 0.000   | 0.000   | numeric.py:171(ones)                               |
-| 1      | 0.000   | 0.000   | 0.002   | 0.002   | (<string>:1(<module>))                             |
+| 1      | 0.000   | 0.000   | 0.002   | 0.002   | {<string>:1(<module>)}                             |
 | 1      | 0.000   | 0.000   | 0.000   | 0.000   | {method 'disable' of '_lsprof.Profiler' objects}   |
 | 1      | 0.000   | 0.000   | 0.000   | 0.000   | {built-in method numpy.empty}                      |
 | 1      | 0.000   | 0.000   | 0.000   | 0.000   | multiarray.py:1106(copyto)                         |
@@ -58,4 +61,21 @@ La mejora es evidente, el código es aproximadamente 4.400 veces más rápido qu
 - La función `primos_optimizado` concentra **0.002** segundos de tiempo interno **(tottime)**.
 - Las operaciones de NumPy como ones, empty y copyto aparecen pero con tiempos prácticamente nulos **(0.000 segundos)**, porque NumPy trabaja internamente en C y las llamadas desde Python son muy rápidas.
 - No hay bucles lentos en Python: el trabajo pesado lo hace  `es_primo[i*i:limite+1:i] = False`, que apenas se refleja en el profiling de Python
+
+<img width="1000" height="500" alt="comparacion_tiempos" src="https://github.com/user-attachments/assets/d07911cf-f835-49ca-9cee-08beb11a7e21" />
+
+
+# Conclusiones
+
+Las 3 técnicas aplicadas funcionan muy bien, la que mayor impacto tiene es la de NumPy, el resto ayuda.  
+
+**Beneficios**
+- Rendimiento increíble ya que, se pasó de 73 segundos a 0.0166 segundos y eso es más de 4.400 veces más rápido.
+- Menos consumo de CPU, al tardar menos el programa usa muchos menos recursos. Si tuviera que ejecutarse muchas veces, el ahorro sería total.
+- Código más limpio con NumPy, puede resultar más compleja de entender al principio.
+
+**Recomendaciones**
+- Usar NumPy cuando los datos sean numéricos y grandes, Python puro se queda corto y NumPy es la opción.
+- Aplicar la raíz cuadrada siempre que compruebes divisores ahorra muchísimas iteraciones innecesarias.
+- El cProfile me ayudó a ver que en el código optimizado las funciones de Python apenas consumen tiempo. Es una buena práctica para no optimizar donde no hace falta.
 
