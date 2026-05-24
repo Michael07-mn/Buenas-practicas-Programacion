@@ -79,3 +79,4 @@ Las 3 técnicas aplicadas funcionan muy bien, la que mayor impacto tiene es la d
 - Aplicar la raíz cuadrada siempre que compruebes divisores ahorra muchísimas iteraciones innecesarias.
 - El cProfile me ayudó a ver que en el código optimizado las funciones de Python apenas consumen tiempo. Es una buena práctica para no optimizar donde no hace falta.
 
+https://github.com/Michael07-mn/Buenas-practicas-Programacion.git
