@@ -39,7 +39,7 @@ Este proyecto muestra el proceso de optimización de un algoritmo para encontrar
 
 ---
 
-## 🚀 Tecnologías utilizadas
+## Tecnologías utilizadas
 - Python 3.13
 - NumPy
 - Matplotlib
