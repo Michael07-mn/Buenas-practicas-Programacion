@@ -29,5 +29,33 @@ Reemplacé completamente la función es_primo por un algoritmo de criba de Erat�
 
 # Resultados
 
+#### Comparación de tiempos de ejecución
 
+| Versión                                      | Tiempo (segundos) |
+|----------------------------------------------|-------------------|
+| Original (sin optimizar)                     | 73.22532 s        |
+| Optimizado (raíz cuadrada + list comprehension + NumPy) | 0.0166 s         |
+
+La mejora es evidente, el código es aproximadamente 4.400 veces más rápido que el original, el cual pasa de practicamente 1 minuto a tan solo 16 milésimas de segundo.
+
+
+#### Resultados de Profiling (Optimizado)
+
+**Total:** 7 llamadas de función en 0.003 segundos  
+
+| ncalls | tottime | percall | cumtime | percall | filename:lineno(function)                          |
+|--------|---------|---------|---------|---------|---------------------------------------------------|
+| 1      | 0.002   | 0.002   | 0.002   | 0.002   | profiling.py:17(primos_optimizado)                 |
+| 1      | 0.000   | 0.000   | 0.003   | 0.003   | {built-in method builtins.exec}                    |
+| 1      | 0.000   | 0.000   | 0.000   | 0.000   | numeric.py:171(ones)                               |
+| 1      | 0.000   | 0.000   | 0.002   | 0.002   | (<string>:1(<module>))                             |
+| 1      | 0.000   | 0.000   | 0.000   | 0.000   | {method 'disable' of '_lsprof.Profiler' objects}   |
+| 1      | 0.000   | 0.000   | 0.000   | 0.000   | {built-in method numpy.empty}                      |
+| 1      | 0.000   | 0.000   | 0.000   | 0.000   | multiarray.py:1106(copyto)                         |
+
+
+- Solo 7 llamadas a funciones en total, lo que demuestra que el código optimizado es muy directo y no incurre en gastos innecesarios.
+- La función `primos_optimizado` concentra **0.002** segundos de tiempo interno **(tottime)**.
+- Las operaciones de NumPy como ones, empty y copyto aparecen pero con tiempos prácticamente nulos **(0.000 segundos)**, porque NumPy trabaja internamente en C y las llamadas desde Python son muy rápidas.
+- No hay bucles lentos en Python: el trabajo pesado lo hace  `es_primo[i*i:limite+1:i] = False`, que apenas se refleja en el profiling de Python
 
